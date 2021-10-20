@@ -69,3 +69,10 @@ font-weight: bolder !important;
   margin-top: -30px !important;
 
 }
+h6{
+  color:rgb(126, 223, 230);
+  font-weight: bolder;
+}
+.position:hover ,h6:hover{
+  cursor: pointer;
+}

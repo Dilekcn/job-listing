@@ -6,11 +6,12 @@ import './App.css'
 import FilteredSkill from './components/FilteredSkill';
 
 
+
 function App() {
   const[data,setData] = useState([])
   const[filterSkill,setFilterSkill] = useState([])
 
-  console.log(data)
+
  
 
   useEffect(() => {
@@ -33,7 +34,7 @@ function App() {
   setFilterSkill([])
  }
   return (
-    <div className="container main_content ">
+    <div className="container main_content pb-2 ">
       <Header/>
     {filterSkill.length !==0?(
         <div className="d-flex  mb-4  bg-white align-items-center  card_content  px-4 py-3 top_skill  ">
@@ -41,10 +42,7 @@ function App() {
         {filterSkill.length !==0 ? (<button className="clear_btn p-1 px-2 border-0 me-3 bg-white   " onClick={clearFilter} >Clear</button>):null}
         </div>): null }
       {data.map((item,i)=>  <Card data={item} key={i} filtered={filtered}/>)}
-      <div>
-        <img src={data[0].logo} alt=""/>
-        hi
-      </div>
+    
     </div>
   )
 }

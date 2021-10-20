@@ -1,8 +1,8 @@
 import React from 'react'
-import img from './images/eyecam-co.svg';
+
 
 function Card({data,filtered}) {
-    console.log(data)
+    console.log(data.logo)
 
  const handleClick = (skill) =>{
     filtered(skill)
@@ -11,7 +11,7 @@ function Card({data,filtered}) {
    
  <div className="d-flex  mb-4  bg-white align-items-center p-0 card_content mt-3 px-4 ">
     <div className="flex-shrink-0 me-4">
-         <img src={img} alt=""/>
+         <img src={data.logo} alt="as"/>
      </div>
     <div className="p-2 bd-highlight">
         <div className="d-flex flex-column bd-highlight mb-3">
@@ -20,9 +20,9 @@ function Card({data,filtered}) {
             { data.featured ? (<span  className="rounded-pill px-2  new_featured pt-2 text-white">FEATURED</span> ): null}
             
             </div>
-            <div className="p-2 bd-highlight"><h5>{data.position}</h5></div>
+            <div className="p-2 bd-highlight position"><h5>{data.position}</h5></div>
             <div className="p-2 bd-highlight">
-                <div className="d-flex flex-row">
+                <div className="d-flex flex-row text-secondary ">
                   <p>{data.postedAt}</p>                 
                   <ul className="d-flex flex-row">
                       <li className="me-5">{data.contract}</li>
