@@ -1,56 +1,52 @@
-import React,{useState,useEffect} from 'react';
-import Data from "./components/data.json";
-import './App.css';
-import Header from './components/Header';
+import React,{useState, useEffect } from 'react'
 import Card from './components/Card';
-import FilterItem from './components/FilterItem';
+import dataa from "./components/data.json";
+import Header from './components/Header';
+import './App.css'
+import FilteredSkill from './components/FilteredSkill';
+
+
+function App() {
+  const[data,setData] = useState([])
+  const[filterSkill,setFilterSkill] = useState([])
+
+  console.log(data)
  
 
-const data= Data;
-function App() {
-
-  const [list, setList] = useState([]);
-  const [filters, setFilters] = useState([])
-
-  // console.log(list)
-
   useEffect(() => {
-    setList(data)
-  }, [list])
-
-
-  const listFilter = (filter_by = null) => {
-
-    if (!filters.includes(filter_by) && filter_by !== null)
-      setFilters([...filters, filter_by])
-
-    setList(list.filter(listing => [...listing.languages, ...listing.tools].includes(filter_by)))
-  }
-
-  const removeFilter = (removed_filter) => {
-    setFilters( filters.filter( item => item !== removed_filter ) )
-  }
-
-
-
-
-  return (
-    <div className="container ">
-      <Header />
-     
-      <div className=" d-flex  flex-column  justify-content-center align-items-center text-secondary main_content  " >
-      <div className="d-flex my-3 p-2 list_item">
-       { filters.map(filter => <FilterItem item={filter} _callback={removeFilter} key={filter} />)}
-     </div>
-    
-     {list.map((item,i) => <Card list={item} key={i} listFilter={listFilter}/>)}
-    
-      </div>
-
-     
+    if(filterSkill.length === 0)
+        setData(dataa)
+  }, [filterSkill])
   
+ 
+ 
+ const filtered = (filter = null) =>{
+   if(!filterSkill.includes(filter) && filter !== null )
+   setFilterSkill([...filterSkill,filter])
+  
+   setData(data.filter(dat =>[...dat.languages, ...dat.tools].includes(filter)))
+ }
+ const removeFilter = (removed_filter) => {
+  setFilterSkill( filterSkill.filter( item => item !== removed_filter ) )
+}
+ const clearFilter = ()=> {
+  setFilterSkill([])
+ }
+  return (
+    <div className="container main_content ">
+      <Header/>
+    {filterSkill.length !==0?(
+        <div className="d-flex  mb-4  bg-white align-items-center  card_content  px-4 py-3 top_skill  ">
+        {filterSkill.map((filterr,i)=> <FilteredSkill filterSkills = {filterr} key={i} removeFilter={removeFilter} clearFilter={clearFilter}/>)}
+        {filterSkill.length !==0 ? (<button className="clear_btn p-1 px-2 border-0 me-3 bg-white   " onClick={clearFilter} >Clear</button>):null}
+        </div>): null }
+      {data.map((item,i)=>  <Card data={item} key={i} filtered={filtered}/>)}
+      <div>
+        <img src={data[0].logo} alt=""/>
+        hi
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,31 +1,49 @@
 import React from 'react'
-import Content from './Content'
-import Img from './Img'
-import Skills from './Skills'
+import img from './images/eyecam-co.svg';
 
-function Card({ list,listFilter  }) {
-    function handleClick(skill){
-        listFilter(skill)
-    }
+function Card({data,filtered}) {
+    console.log(data)
 
-    const Skills = ({skill}) => (<div className=" mx-1  ">
-        <button onClick={() => handleClick(skill)} className='me-2 m rounded-pill border-0 bg-info text-white' >
-            {skill}
-        </button>
-        </div>)
-
+ const handleClick = (skill) =>{
+    filtered(skill)
+ }
     return (
-        <div className=" m-3 d-flex flex-row bg-light text-dark card_content" style={{width: '80%'}}>
-            <Img imgSrc={list.logo}  /> 
-            <Content list={list} />
-            <div className="d-flex flex-row justify-content-end align-content-end pt-5 ms-4">
-            {
-                [...list.languages, ...list.tools].map( skill => <Skills skill={skill}key={skill} />)
-            }
+   
+ <div className="d-flex  mb-4  bg-white align-items-center p-0 card_content mt-3 px-4 ">
+    <div className="flex-shrink-0 me-4">
+         <img src={img} alt=""/>
+     </div>
+    <div className="p-2 bd-highlight">
+        <div className="d-flex flex-column bd-highlight mb-3">
+            <div className="p-2 bd-highlight d-flex flex-row justify-content-between "><h6>{data.company}</h6>
+            { data.new ? (<span className="rounded-pill  px-2  new_featured pt-2 text-white">NEW </span> ): null}
+            { data.featured ? (<span  className="rounded-pill px-2  new_featured pt-2 text-white">FEATURED</span> ): null}
+            
+            </div>
+            <div className="p-2 bd-highlight"><h5>{data.position}</h5></div>
+            <div className="p-2 bd-highlight">
+                <div className="d-flex flex-row">
+                  <p>{data.postedAt}</p>                 
+                  <ul className="d-flex flex-row">
+                      <li className="me-5">{data.contract}</li>
+                      <li>{data.location}</li>
+                  </ul>                  
+                </div>
+            </div>
         </div>
- 
-
+    </div>
+    <div className="ms-auto p-2 bd-highlight">
+       <div className="d-flex flex-row bd-highlight mb-3">
+           {
+              [...data.languages, ...data.tools].map( (skill,i) =>  <button onClick={() => handleClick(skill)} className="p-1 px-2 border-0 me-3  skills " key={i}>{skill}</button> ) 
+           }
+           
+        
         </div>
+    </div>
+</div>
+    
+       
     )
 }
 

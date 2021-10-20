@@ -1,8 +1,25 @@
-.App {
-  text-align: center;
+
+.new_featured{
+  font-size: 10px !important;
+  font-weight: bolder !important;
+  background-color: rgb(126, 223, 230);
+
+
 }
+
+
+.new_featured:hover{
+  background-color: black !important;
+  color: white;
+  cursor: pointer;
+  font-weight: bolder !important;
+ 
+}
+
+
 .header_cont{
   background-color: rgb(126, 223, 230);
+ 
 }
 
 .main_content{
@@ -13,17 +30,42 @@
 
 .card_content{
   box-shadow: 0 10px 10px rgba(126, 223, 230, 0.5);
+  width: 80% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  position: relative;   
+  border-radius: 10px;
+}
+.card_content:hover{
+  border-left: 5px solid  rgb(126, 223, 230);
+
 }
 
-.list_item{
+.skills{
+  border-radius: 10px !important;
+  background-color: rgb(126, 223, 230);
+  color: white;
 
-  background-color: rgb(242, 242, 247);
-  box-shadow: 0 10px 10px rgba(126, 223, 230, 0.5);
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 6;
-  margin-bottom: 10px;
+}
+.skills:hover{
+  background-color: black !important;
+  color: white;
+  cursor: pointer;
+  font-weight: bolder !important;
+ 
+}
+.clear_btn{
+  margin-left: auto !important;
+  margin-right: 20px;
+border-bottom: 2px solid rgb(126, 223, 230) !important;
+color: rgb(126, 223, 230);
+font-weight: bolder !important;
 
-  
+
+}
+
+
+.top_skill{
+  margin-top: -30px !important;
+
 }
